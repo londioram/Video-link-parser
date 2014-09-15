@@ -1,8 +1,3 @@
-function init()
-{
-    generateIFrame();
-}
-
 function parseURL(url) {
     var a =  document.createElement('a');
     a.href = url;
@@ -67,13 +62,13 @@ function generateIFrame()
             document.getElementById("embedded_container").innerHTML = iframe;
             return iframe;
         }
-        else
-        {
-            alert("Video server error: " + url.host);
-            var iframe = '<div class="alert alert-danger" role="alert">Sorry, but we can not process video from ' + url.host + '. Maybee video ID is incorrect! ' + url.segments[2] + '</div>';
-            document.getElementById("embedded_container").innerHTML = iframe;
-            return iframe;
-        }
+        //else
+        //{
+        //    alert("Video server error: " + url.host);
+        //    var iframe = '<div class="alert alert-danger" role="alert">Sorry, but we can not process video from ' + url.host + '. Maybee video ID is incorrect! ' + url.segments[2] + '</div>';
+        //    document.getElementById("embedded_container").innerHTML = iframe;
+        //    return iframe;
+        //}
     }
     else if (url.host == "www.dailymotion.com" || url.host == "dailymotion.com")
     {
@@ -84,10 +79,20 @@ function generateIFrame()
     }
     else if (url.host == "www.twitch.tv" || url.host == "twitch.tv")
     {
-        alert("Video server: " + url.host + "\n" + "Video id:     " + url.segments[0]);
-        var iframe = '<iframe src="http://' + url.host + '/widgets/live_embed_player.swf?channel=' + url.segments[0] + '" frameborder="0" scrolling="no" allowfullscreen></iframe>';
-        document.getElementById("embedded_container").innerHTML = iframe;
-        return iframe;
+        if (url.segments[1] == "c")
+        {
+            alert("Video server: " + url.host + "\n" + "Video id:     " + url.segments[2]);
+            var iframe = '<iframe src="http://' + url.host + '/widgets/live_embed_player.swf?channel=' + url.query + '" frameborder="0" scrolling="no" allowfullscreen></iframe>';
+            document.getElementById("embedded_container").innerHTML = iframe;
+            return iframe;
+        }
+        else
+        {
+            alert("Video server: " + url.host + "\n" + "Video id:     " + url.segments[0]);
+            var iframe = '<iframe src="http://' + url.host + '/widgets/live_embed_player.swf?channel=' + url.segments[0] + '" frameborder="0" scrolling="no" allowfullscreen></iframe>';
+            document.getElementById("embedded_container").innerHTML = iframe;
+            return iframe;
+        }
     }
     else if (url.host == "www.coub.com" || url.host == "coub.com")
     {
