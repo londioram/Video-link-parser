@@ -98,11 +98,9 @@ function generateIFrame()
     /**Twitch**/
     else if (url.host == "www.twitch.tv" || url.host == "twitch.tv")
     {
-        if (url.segments[1] == "c")
+        if (url.segments[0] == "directory" || url.segments[0] == "jobs" || url.segments[0] == "p" || url.segments[0] == "user")
         {
-            var iframe = '<iframe src="http://' + url.host + '/widgets/live_embed_player.swf?channel=' + url.query + '" frameborder="0" scrolling="no" allowfullscreen></iframe>';
-            document.getElementById("embedded_container").innerHTML = iframe;
-            return iframe;
+            return incorrectID(url);
         }
         else
         {
