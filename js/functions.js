@@ -1,6 +1,6 @@
 /**
  *  This script process a direct link of video from video hosting:
- *      YouTube, RuTube, Vimeo, DailyMotion, Twitch, Coub ...
+ *      YouTube, RuTube, Vimeo, DailyMotion, Twitch, HitBox, Coub ...
  *  And generate iframe for including video into your website.
 **/
 
@@ -105,6 +105,22 @@ function generateIFrame()
         else
         {
             var iframe = '<iframe src="http://' + url.host + '/widgets/live_embed_player.swf?channel=' + url.segments[0] + '" frameborder="0" scrolling="no" allowfullscreen></iframe>';
+            document.getElementById("embedded_container").innerHTML = iframe;
+            return iframe;
+        }
+    }
+    /**HitBox**/
+    else if (url.host == "www.hitbox.tv" || url.host == "hitbox.tv")
+    {
+        if (url.segments[0] == "video")
+        {
+            var iframe = '<iframe src="http://' + url.host + '/#!/embedvideo/' + url.segments[1] + '" frameborder="0" scrolling="no" allowfullscreen></iframe>';
+            document.getElementById("embedded_container").innerHTML = iframe;
+            return iframe;
+        }
+        else
+        {
+            var iframe = '<iframe src="http://' + url.host + '/#!/embed/' + url.segments[0] + '" frameborder="0" scrolling="no" allowfullscreen></iframe>';
             document.getElementById("embedded_container").innerHTML = iframe;
             return iframe;
         }
