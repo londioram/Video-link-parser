@@ -11,7 +11,7 @@ var VideoParser = function(iframe_id){
 VideoParser.prototype = {
     frame:null,
     init:function(iframe_id){
-     this.frame = document.getElementById("embedded_container");
+     this.frame = document.getElementById(iframe_id);
 
 
     },
