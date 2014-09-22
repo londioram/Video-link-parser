@@ -31,8 +31,9 @@
                                         <div class="input-group-addon">URL:</div>
                                         <input class="form-control" type="text" placeholder="Enter video's URL" id="video_url">
                                     </div>
+
                                 </div>
-                                <button type="button" class="btn btn-primary btn-lg" onclick="generateIFrame();">Show player</button>
+                                <button id="ganarateIframeButton" type="button" class="btn btn-primary btn-lg" >Show player</button>
                             </form>
                         </div>
                     </div>
@@ -52,6 +53,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/functions.js"></script>
+        <script>
+            var parser = new VideoParser("embedded_container");
+            $('#ganarateIframeButton').click(function(){
+                parser.generateIFrame();
+            });
+        </script>
     </footer>
 </body>
 </html>
